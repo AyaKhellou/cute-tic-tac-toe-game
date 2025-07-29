@@ -1,0 +1,4 @@
+@import "tailwindcss";
+.cell{
+    @apply text-center pt-1.5  border-amber-400 cursor-pointer hover:bg-gray-400;
+}
