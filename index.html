@@ -10,19 +10,35 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Knewave&display=swap" rel="stylesheet">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body class="">
-    <div class="gamecells font-[knewave] text-white text-8xl bg-gray-500 w-96 h-96 mx-auto my-4 grid grid-cols-3 grid-rows-3">
-        <div id="1" class="cell text-center pt-1.5 border-r-4 border-b-4"></div>
-        <div id="2" class="cell border-b-4"></div>
-        <div id="3" class="cell border-l-4 border-b-4"></div>
-        <div id="4" class="cell border-r-4 border-b-4"></div>
-        <div id="5" class="cell border-b-4"></div>
-        <div id="6" class="cell border-l-4 border-b-4"></div>
-        <div id="7" class="cell border-r-4 "></div>
-        <div id="8" class="cell "></div>
-        <div id="9" class="cell border-l-4 "></div>
+    <div class="game-container flex justify-around items-center bg-[#C6E2FF] w-fit mx-auto mt-4 p-16 rounded-4xl">
+        <div class="details flex flex-row-reverse gap-0">
+            <div class="comment relative block h-36 mr-14">
+                <div class="circle bg-white w-44 h-32 rounded-[50%]"></div>
+                <div class="triangle">
+                    <div class="w-0 border-[20px] border-l-transparent border-r-transparent border-b-transparent border-t-white rotate-[30deg] absolute -bottom-0"></div>
+                </div>
+            </div>
+            <img class="m-0" src="./images/image-from-rawpixel-id-18313961-png.png" alt="rabbit image" width="300px">
+        </div>
+        <div class="gameboard">
+            <div class="gamecells font-[knewave] text-gray-700 text-8xl w-96 h-96 my-4 grid grid-cols-3 grid-rows-3">
+                <div id="0" class="cell text-center pt-1.5  bg-[#F3BFCC]"></div>                
+                <div id="1" class="cell bg-[#AAD0AE]"></div>
+                <div id="2" class="cell bg-[#FFF2D0]"></div>
+                <div id="3" class="cell bg-[#FFF2D0]"></div>
+                <div id="4" class="cell bg-[#F3BFCC]"></div>
+                <div id="5" class="cell bg-[#AAD0AE]"></div>
+                <div id="6" class="cell bg-[#AAD0AE]"></div>
+                <div id="7" class="cell bg-[#FFF2D0]"></div>
+                <div id="8" class="cell bg-[#F3BFCC]"></div>
+            </div>
+            <button class="restart block mx-auto text-center bg-pink-300 rounded-4xl px-5 py-2 hover:bg-pink-400 cursor-pointer">Restart</button>
+        </div>
     </div>
-    <script src="./main.js"></script>
+<script src="./main.js"></script>
 </body>
 </html>
