@@ -1,8 +1,16 @@
 let cells = document.querySelectorAll('.cell');
 let restart = document.querySelector('button.restart');
 let gameOver = false;
-let comment = document.querySelector('.comment p');
+let playersTurn = document.querySelector('.turn');
+let result = document.querySelector('.result');
 
+let randomNum = Math.floor(Math.random() * 2);
+
+let turns = ['x','o'];
+
+let turn = turns[randomNum]
+
+playersTurn.textContent = `Player ${turn.toUpperCase()}'s turn`;
 // restart function
 restart.addEventListener('click', ()=>{
 
@@ -31,10 +39,10 @@ function checkWin(currentCell) {
 
         if (winCase.every(el => cells[el].textContent === currentCell.textContent && !gameOver)) {
 
-            comment.textContent = `${currentCell.textContent} win`;
+            result.textContent = `Player ${currentCell.textContent} won`;
 
             winCase.forEach(el => {
-                cells[el].style.backgroundColor = 'white';
+                cells[el].style.backgroundColor = '#C299C9';
             });
             gameOver = true;
             setGameOver();
@@ -48,35 +56,37 @@ function checkWin(currentCell) {
 // Add click event listener to each cell
 
 
-let turn = 'x';
 
-cells.forEach((cell,i) => {
+cells.forEach((cell) => {
 
     cell.addEventListener('click', () => {
         if (cell.textContent === "" && turn === 'x' && !gameOver) {
-            cell.textContent = 'X';
+
+            cell.textContent = turn.toUpperCase();
 
             checkWin(cell);
 
             if (!gameOver) {
                 turn = 'o';
-                comment.textContent = `it's your turn O`;
+                playersTurn.textContent = `Player ${turn.toUpperCase()}'s turn`;
             }
 
         }else if(cell.textContent === "" && turn === 'o' && !gameOver) {
-            cell.textContent = 'O';
+
+            cell.textContent = turn.toUpperCase();
 
             checkWin(cell);
 
             if (!gameOver) {
                 turn = 'x';
-                comment.textContent = `it's your turn X`;
+                playersTurn.textContent = `Player ${turn.toUpperCase()}'s turn`;
             }
         }
         
         if ([...cells].every(el => el.textContent !== '') && !gameOver) {
+            gameOver = true;
             setGameOver();
-            comment.textContent = 'game over no one won'
+            result.textContent = 'game over no one won';
         }
     });
     
@@ -84,7 +94,6 @@ cells.forEach((cell,i) => {
 
 function setGameOver(){
     if (gameOver) {
-        // comment.textContent = `game is over! ${winner} won 😁`;
         restart.textContent = `Play again`;
     }
 }

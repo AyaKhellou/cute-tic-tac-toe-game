@@ -1,4 +1,9 @@
 @import "tailwindcss";
+
+@theme{
+    --breakpoint-xs: 420px;
+    --breakpoint-xxs: 390px;
+}
 .cell{
     @apply text-center pt-1.5  border-amber-400 cursor-pointer hover:opacity-50;
 }
