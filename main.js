@@ -11,12 +11,7 @@ let turns = ['x','o'];
 let turn = turns[randomNum]
 
 playersTurn.textContent = `Player ${turn.toUpperCase()}'s turn`;
-// restart function
-restart.addEventListener('click', ()=>{
 
-    window.location.reload();
-    
-})
 //set wining cases:
 
 let winningCases = [
@@ -46,6 +41,7 @@ function checkWin(currentCell) {
             });
             gameOver = true;
             setGameOver();
+            return;
         }
 
     });
@@ -55,38 +51,26 @@ function checkWin(currentCell) {
 
 // Add click event listener to each cell
 
-
-
 cells.forEach((cell) => {
 
     cell.addEventListener('click', () => {
-        if (cell.textContent === "" && turn === 'x' && !gameOver) {
+        if (cell.textContent === "" && !gameOver) {
 
             cell.textContent = turn.toUpperCase();
 
             checkWin(cell);
 
             if (!gameOver) {
-                turn = 'o';
+
+                turn = turn === 'x' ? 'o' : 'x';
                 playersTurn.textContent = `Player ${turn.toUpperCase()}'s turn`;
             }
 
-        }else if(cell.textContent === "" && turn === 'o' && !gameOver) {
-
-            cell.textContent = turn.toUpperCase();
-
-            checkWin(cell);
-
-            if (!gameOver) {
-                turn = 'x';
-                playersTurn.textContent = `Player ${turn.toUpperCase()}'s turn`;
-            }
         }
-        
         if ([...cells].every(el => el.textContent !== '') && !gameOver) {
             gameOver = true;
             setGameOver();
-            result.textContent = 'game over no one won';
+            result.textContent = 'Draw!';
         }
     });
     
@@ -97,3 +81,15 @@ function setGameOver(){
         restart.textContent = `Play again`;
     }
 }
+// restart function
+restart.addEventListener('click', ()=>{
+    cells.forEach(cell => {
+        cell.textContent = '';
+        cell.style.backgroundColor = '';
+    });
+    gameOver = false;
+    turn = turns[randomNum];
+    playersTurn.textContent = `Player ${turn.toUpperCase()}'s turn`;
+    result.textContent = '--';
+    restart.textContent = 'Restart';
+})
